@@ -18,15 +18,18 @@ oracledb.getConnection(
             console.error(err.message);
             return;
         }
-        connection.execute(
-            "SELECT * FROM ACCESSCONTROL.USUARIO USUA WHERE USUA.USUA_ID = 657", function (err, result) {
+        let query =  'SELECT * FROM ACCESSCONTROL.USUARIO USUA WHERE USUA.USUA_ID IN ( :id1, :id2)';
+        let binds = [657, 4005];
+        connection.execute( query, binds,
+            //"SELECT * FROM ACCESSCONTROL.USUARIO USUA WHERE USUA.USUA_ID IN ( :id)", { id: [657, 4005] },
+             function (err, result) {
                 if (err) {
                     console.error(err.message);
                     doRelease(connection);
                     return;
                 }
                 //console.log(result.metaData); // [ { name: ‘SYSDATE’ } ]
-                console.log(result.rows); // [ [ 2017-12-08T19:03:45.000Z ] ]
+                console.log(result); // [ [ 2017-12-08T19:03:45.000Z ] ]
                 doRelease(connection);
             });
     }); function doRelease(connection) {
