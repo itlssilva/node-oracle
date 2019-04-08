@@ -7,7 +7,8 @@ const Usuario = sequelize.define('usuario', {
     id: {
         type: Sequelize.DECIMAL,
         primaryKey: true,
-        autoIncrement: true
+        autoIncrement: true,
+        field: 'USUA_ID'
     },
     nome: {
         type: Sequelize.STRING,
