@@ -1,7 +1,7 @@
 'use struct'
 
 const Sequelize = require('sequelize');
-const sequelize = new Sequelize({dialect: "oracle"});
+const sequelize = new Sequelize('ACESSCONTROL','accesscontrol','accesscontrol',{dialect: "oracle"});
 
 const Usuario = sequelize.define('usuario', {
     id: {
